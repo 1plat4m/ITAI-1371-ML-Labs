@@ -7,5 +7,5 @@ Compute → GPUs/TPUs, hardware speed
 Algorithms → architecture, optimization
 Data → training corpora, scale and quality
 
-This is basically:AI progress = compute + algorithms + data
+This is basically: AI progress = compute + algorithms + data
 
