@@ -1,119 +1,61 @@
-What your FIELDPROOF project is about
+# Module 2 Lab — Tools Used in Machine Learning
 
-FIELDPROOF is my AI project that simulates a field compliance verification system. It uses machine learning to analyze inspection and safety data, predict risk, and help determine whether field work is compliant. From this project, I learned how to prepare data, train a machine learning model, evaluate predictions, and connect AI results to real-world safety and compliance decisions.
+This repository contains my completed work for the **Module 2 Lab Exercise: Tools Used in Machine Learning**. The goal of the lab was to set up a working machine learning environment, get comfortable with the core Python libraries used throughout the course, load a real dataset, produce a first visualization, and document everything in a way that would be readable to someone reviewing the work later.
 
-The idea is to help companies confirm that field workers are following required safety procedures, inspections, and compliance steps before work is approved.
+## Contents
 
-Instead of relying only on paper forms or manual reports, FIELDPROOF uses data, AI, and risk scoring to help detect whether a task is compliant, non-compliant, or high-risk. The project simulates how a real-world system could support industries like oil and gas, construction, utilities, transportation, and manufacturing.
+- `Module_02_Lab_Exercise-1.ipynb` — the completed Jupyter notebook with all code cells executed and the reflection written.
+- `README.md` — this file.
 
-In simple terms:
+## What I Did in This Lab
 
-FIELDPROOF helps verify that field work was done correctly, safely, and with evidence.
+The lab was structured in five parts. I worked through each one in order inside a single Jupyter notebook.
 
-What you learned from the project
+In **Part 1**, I set up my development environment. The lab gave three options — Google Colab, a local Jupyter installation, and VS Code with the Python and Jupyter extensions — and I confirmed the environment by running the first code cell, which imports pandas, NumPy, matplotlib, and scikit-learn. The cell printed the pandas and NumPy versions to confirm everything was wired up correctly.
 
-Through this project, you learned how machine learning can be used to solve a real operational problem. You worked with simulated field data and used AI concepts to classify or detect compliance risk.
+In **Part 2**, I loaded the Iris dataset using `sklearn.datasets.load_iris()` and converted it into a pandas DataFrame. The dataset is the classic 150-row Iris flower dataset with four features — sepal length, sepal width, petal length, and petal width — and three target classes: setosa, versicolor, and virginica. I used `df.head()` and `df.info()` to inspect the structure and confirm there were no missing values.
 
-You also learned how to prepare data, train a model, test the model, and evaluate results using visuals like a confusion matrix, ROC curve, feature importance chart, and risk score scatter plot.
+In **Part 3**, I created my first visualization: a matplotlib scatter plot of sepal length versus sepal width, colored by species. I used a Python dictionary to map each species to a color (red for setosa, blue for versicolor, green for virginica) and looped over the unique species to plot each group separately so the legend would render correctly.
 
-The biggest lesson is that AI is not just about predictions. It is about creating a complete workflow:
+In **Part 4**, I practiced basic data operations. I used `groupby('species').mean()` to compute the mean of every numeric feature for each of the three species, and `value_counts()` to confirm the dataset is balanced — 50 samples per class.
 
-data → model → prediction → verification → decision support
+In **Part 5**, I read through the lab's notes on GitHub workflow (creating a repository, committing, pushing) and on documenting projects with Markdown. I then completed the two assessment tasks at the end of the notebook:
+- **Task 1** — computed the mean and standard deviation of sepal length using NumPy. Result: mean = 5.84 cm, standard deviation = 0.83 cm. The cell included assertion checks that confirmed the values were valid floats.
+- **Task 2** — built a bar chart showing the count of samples for each species, confirming visually that the dataset is balanced (50 / 50 / 50).
 
-You also learned that good data quality matters. If the data is incomplete, biased, or poorly structured, the model results can become unreliable.
+Finally, I filled out the reflection cell with my observations about the dataset.
 
-How the code works
+## What I Learned
 
-The code usually follows these steps:
+The biggest takeaway from this lab was that the Python data-science stack is meant to be used together, not as a list of separate tools. Pandas does the data handling, NumPy does the math underneath, matplotlib does the plotting, and scikit-learn provides the dataset and (later) the algorithms. Each one has a specific job, and they hand data back and forth cleanly through DataFrames and NumPy arrays.
 
-1. Import libraries
+I also learned a few specific things that I'll keep using in later modules:
 
-The notebook starts by loading Python tools such as:
+- **The Jupyter notebook workflow.** Being able to write a paragraph of explanation, run a code cell right below it, and see the output and any plots immediately changes how I think about exploring data. It's much closer to taking notes than to traditional programming.
+- **What "loading a dataset" actually means in scikit-learn.** `load_iris()` doesn't return a DataFrame — it returns a Bunch object with `.data`, `.target`, `.feature_names`, and `.target_names` attributes. Wrapping it in a pandas DataFrame and adding a `species` column was the step that made everything afterwards (filtering, grouping, plotting) easy.
+- **Why visualization comes before modeling.** The scatter plot showed me something I would not have seen from numbers alone: setosa is completely separate from the other two species in sepal-space, but versicolor and virginica overlap. That observation tells me ahead of time that any classifier using only sepal dimensions will struggle on those two species — and that's a useful thing to know before training a model rather than after.
+- **The dataset is balanced.** Fifty samples per species means I do not need to worry about class imbalance for the Iris dataset, which is one less thing to think about when modeling. The lab pointed this out, and the bar chart in Task 2 confirmed it.
+- **Documentation belongs next to the code.** Writing the reflection cell forced me to actually look at my own scatter plot and put what I saw into words. That habit of pairing every analysis with a short written summary is something I want to carry forward.
 
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+## Challenges I Faced
 
-These libraries help with data handling, machine learning, and charts.
+A few things tripped me up while working through the lab.
 
-2. Load or create the dataset
+- **Choosing where to run the notebook.** I had three options — Colab, local Jupyter, VS Code — and spent more time than I expected just deciding. Colab was the path of least resistance because the libraries are pre-installed, so I went with that for this lab; on a local install I would have had to run `pip install` for the four libraries first.
+- **Getting the import line right.** It is easy to mistype `from sklearn import datasets` or to import scikit-learn as `sklearn` and then forget the dot-separated submodule path. The standard aliases (`pd`, `np`, `plt`) feel arbitrary at first, but I learned quickly that it's worth using them exactly as everyone else does, because every example online assumes them.
+- **Plotting multiple groups in one matplotlib chart.** My first instinct was to call `plt.scatter()` once with the whole DataFrame, but that produces a single-color cloud. I had to restructure the code to loop over the three species and call `plt.scatter()` once per species so that each group got its own color and a legend entry. This is a small thing, but it was the first place I had to actually *think* about how matplotlib works rather than copying a one-liner.
+- **Reading the DataFrame output without getting lost.** `df.info()` prints column names, non-null counts, and dtypes; `df.head()` prints the first five rows. The two outputs look similar at a glance, and I had to slow down to actually understand what each one was telling me.
+- **The Markdown reflection cell.** Writing prose about a dataset is harder than it sounds. The temptation is to restate what the numbers say ("there are 50 samples per species"). The harder, more useful thing is to say what the numbers *imply* ("the dataset is balanced, so I don't need to weight classes during training"). Pushing myself to write the second kind of sentence was a real exercise.
 
-The project uses a simulated FIELDPROOF dataset. It may include columns like:
+## Tools and Versions Used
 
-worker_id
-task_type
-inspection_score
-ppe_detected
-location_verified
-sensor_reading
-risk_score
-compliance_status
+- Python 3.13
+- pandas 3.0.2
+- NumPy 2.4.4
+- matplotlib (default Colab version)
+- scikit-learn (default Colab version)
+- Jupyter Notebook / Google Colab
 
-The goal is to use these features to predict whether a field task is compliant or risky.
+## Next Steps
 
-3. Prepare the data
-
-The code separates the input features from the target label.
-
-Example:
-
-X = df.drop("compliance_status", axis=1)
-y = df["compliance_status"]
-
-X contains the information used to make the prediction.
-y contains the answer the model is trying to learn.
-
-4. Split the data
-
-The dataset is divided into training and testing data.
-
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42
-)
-
-The model learns from the training data, then gets tested on data it has not seen before.
-
-5. Train the model
-
-A machine learning model is trained, such as a Random Forest classifier.
-
-model = RandomForestClassifier(random_state=42)
-model.fit(X_train, y_train)
-
-This teaches the model to recognize patterns in the FIELDPROOF data.
-
-6. Make predictions
-y_pred = model.predict(X_test)
-
-The model predicts whether each field record is compliant or high-risk.
-
-7. Evaluate the model
-print(accuracy_score(y_test, y_pred))
-print(classification_report(y_test, y_pred))
-
-This shows how well the model performed.
-
-You can also generate visuals like:
-
-confusion_matrix(y_test, y_pred)
-
-This helps show correct and incorrect predictions.
-
-How to run the code
-
-To run the FIELDPROOF project:
-
-Open the notebook file in Jupyter Notebook, JupyterLab, Google Colab, or VS Code.
-Make sure the required libraries are installed.
-Run each cell from top to bottom.
-Review the output after each section.
-Check the final charts and model evaluation results.
-
-If using VS Code, open the .ipynb notebook and click Run All.
-
-If a library is missing, install it with:
-
-pip install pandas numpy matplotlib scikit-learn
+Module 3 moves from *tools* into *types of machine learning* and asks me to build my first classifier. Based on what the scatter plot showed in this lab, my expectation is that a simple model will get setosa right easily and will need help separating versicolor from virginica — likely by using petal length and petal width instead of, or in addition to, the sepal dimensions I plotted here. That's the first thing I want to test in the next lab.
