@@ -1,6 +1,7 @@
 What your FIELDPROOF project is about
 
-FIELDPROOF is my AI project that simulates a field compliance verification system. It uses machine learning to analyze inspection and safety data, predict risk, and help determine whether field work is compliant. From this project, I learned how to prepare data, train a machine learning model, evaluate predictions, and connect AI results to real-world safety and compliance decisions.
+FIELDPROOF is my AI project that simulates a field compliance verification system. It uses machine learning to analyze inspection and safety data, predict risk, and help determine whether field work is compliant. 
+From this project, I learned how to prepare data, train a machine learning model, evaluate predictions, and connect AI results to real-world safety and compliance decisions.
 
 The idea is to help companies confirm that field workers are following required safety procedures, inspections, and compliance steps before work is approved.
 
