@@ -1,4 +1,4 @@
-# ITAI-1371-ML-Labs
+# ITAI-1371-Intro to Machine Learning - Labs
 Machine Learning Basics Labs
 
 The AI system stack trinity
