@@ -1,5 +1,7 @@
 # FIELDPROOF™ — Sensor-Verified Human Task Execution for Oil & Gas Operations
 
+https://stop-blanch-02671124.figma.site/
+
 This repository contains my **Midterm Project** for ITAI 1371, Spring 2026: a complete machine learning pipeline that demonstrates how human activity recognition can be applied to verifying that field workers in oil & gas operations actually perform safety-critical tasks correctly. The earlier modules in my portfolio (Modules 2 through 5) built up the supervised ML toolkit one piece at a time — load data, prepare it, run the workflow — and FIELDPROOF is where those pieces had to come together on a real domain problem with real stakes for the first time.
 
 ## Contents
