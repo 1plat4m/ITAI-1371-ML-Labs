@@ -1,14 +1,6 @@
 # ITAI-1371-Intro to Machine Learning - Labs
 Machine Learning Basics Labs
 
-The AI system stack trinity
-
-Compute → GPUs/TPUs, hardware speed
-Algorithms → architecture, optimization
-Data → training corpora, scale and quality
-
-This is basically: AI progress = compute + algorithms + data
-
 📘 Course Overview
 
 The course introduces Machine Learning (ML) as part of Artificial Intelligence and focuses on building practical skills using real tools, datasets, and hands-on exercises. The goal is to help you learn faster, think critically, and develop problem-solving skills for real-world applications.
