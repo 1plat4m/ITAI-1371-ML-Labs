@@ -1,5 +1,7 @@
 # CLINICPROOF™ — Sensor-Verified Medical Procedure Compliance
 
+https://game-middle-32421295.figma.site
+
 This repository contains my **Final Project** for ITAI 1371, Spring 2026: a complete machine learning pipeline that demonstrates how human activity recognition can be applied to verifying clinical procedure compliance in healthcare settings. The earlier modules in my portfolio (Modules 2 through 10) built up the toolkit one piece at a time — load data, prepare it, run the workflow, understand bias-variance, ensemble, cluster — and CLINICPROOF is where those pieces had to come together on a real problem with real stakes.
 
 ## Contents
